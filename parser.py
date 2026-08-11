@@ -1,5 +1,6 @@
 ## Opens file and prints out all the logs with for loop and returns ##
 def parser_log(log):
+    events = []
     with open(log, "r") as file:
         logs = file.readlines()
 
@@ -14,10 +15,12 @@ def parser_log(log):
         username = parts[3].split("user=")[1]
         ip_addresses = parts[4].split("ip=")[1]
 
-    return {
-        "date": date,
-        "time": time,
-        "event": event,
-        "username": username,
-        "ip": ip_addresses
-    }
+        events.append ({
+            "date": date,
+            "time": time,
+            "event": event,
+            "username": username,
+            "ip": ip_addresses
+        })
+
+    return events
