@@ -9,11 +9,15 @@ def parser_log(log):
 
         parts = log.split()
 
-        date = parts[0]
-        time = parts[1]
-        event = parts[2]
-        username = parts[3].split("user=")[1]
-        ip_addresses = parts[4].split("ip=")[1]
+        try:
+            date = parts[0]
+            time = parts[1]
+            event = parts[2]
+            username = parts[3].split("user=")[1]
+            ip_addresses = parts[4].split("ip=")[1]
+        except(IndexError, ValueError):
+            print("Skipping bad log:", log)
+            continue
 
         events.append ({
             "date": date,
