@@ -18,4 +18,10 @@ def detect_failed_logins(events, threshold):
 
                 failed_attempts[ip_addresses] = 1
 
-    return failed_attempts
+    suspicious_ips = {}
+
+    for ip in failed_attempts:
+        if failed_attempts[ip] >= threshold:
+            suspicious_ips[ip] = failed_attempts[ip]
+
+    return suspicious_ips
